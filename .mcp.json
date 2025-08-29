@@ -1,0 +1,44 @@
+{
+    "mcpServers": {
+        "filesystem": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "/home/ywatanabe/"
+            ]
+        },
+        "puppeteer": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+        },
+        "sequential-thinking": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sequential-thinking"
+            ]
+        },
+        "crawl4ai": {
+            "type": "sse",
+            "url": "http://localhost:11235/mcp/sse"
+        },
+        "emacs-tracker": {
+            "command": "python",
+            "args": ["-m", "emacs_tracker.server"]
+        },
+        "sccpt": {
+            "command": "python",
+            "args": ["/home/ywatanabe/proj/sccpt/mcp_server_sccpt.py"]
+        },
+        "screen-manager": {
+            "command": "python",
+            "args": [
+                "-m",
+                "screen_manager.mcp_server"
+            ],
+            "env": {},
+            "description": "Screen Session Manager - Manage screen sessions, send commands, and capture output"
+        }
+    }
+}
