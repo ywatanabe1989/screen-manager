@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Timestamp: "2025-08-30 09:24:53 (ywatanabe)"
-# File: /home/ywatanabe/proj/screen-session-manager/src/screen_session_manager/mcp_server.py
+# Timestamp: "2025-08-30 10:05:31 (ywatanabe)"
+# File: /home/ywatanabe/proj/screen-manager/src/screen_manager/mcp_server.py
 # ----------------------------------------
 from __future__ import annotations
 import os
 __FILE__ = (
-    "./src/screen_session_manager/mcp_server.py"
+    "./src/screen_manager/mcp_server.py"
 )
 __DIR__ = os.path.dirname(__FILE__)
 # ----------------------------------------
-!/usr/bin/env python3
 
 """
 MCP Server for Screen Session Manager
@@ -19,9 +18,7 @@ Provides MCP tools for managing screen sessions, sending commands, and capturing
 """
 
 import logging
-from typing import Any
-from typing import Dict
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from fastmcp import FastMCP
 from pydantic import Field
@@ -52,7 +49,8 @@ def get_session_manager() -> ScreenSessionManager:
 def create_session(
     name: str = Field(description="Name for the screen session"),
     working_dir: Optional[str] = Field(
-        default=None, description="Working directory for the session (defaults to current directory)"
+        default=None,
+        description="Working directory for the session (defaults to current directory)",
     ),
     verbose: bool = Field(default=False, description="Enable verbose output"),
 ) -> Dict[str, Any]:
@@ -94,7 +92,9 @@ def create_session(
 
 @mcp.tool
 def send_command(
-    session_name: str = Field(description="Full name of the screen session (as returned by create_session)"),
+    session_name: str = Field(
+        description="Full name of the screen session (as returned by create_session)"
+    ),
     command: str = Field(description="Command to send to the session"),
     verbose: bool = Field(default=False, description="Enable verbose output"),
 ) -> Dict[str, Any]:
@@ -134,9 +134,12 @@ def send_command(
 
 @mcp.tool
 def capture_output(
-    session_name: str = Field(description="Full name of the screen session (as returned by create_session)"),
+    session_name: str = Field(
+        description="Full name of the screen session (as returned by create_session)"
+    ),
     num_last_lines: int = Field(
-        default=-1, description="Number of last lines to capture (-1 for all available output, positive number for last N lines)"
+        default=-1,
+        description="Number of last lines to capture (-1 for all available output, positive number for last N lines)",
     ),
 ) -> Dict[str, Any]:
     """Capture output from a screen session.
@@ -266,7 +269,9 @@ def cleanup_session(
 
 @mcp.tool
 def get_session_info(
-    session_name: str = Field(description="Full name of the screen session (as returned by create_session)"),
+    session_name: str = Field(
+        description="Full name of the screen session (as returned by create_session)"
+    ),
 ) -> Dict[str, Any]:
     """Get detailed information about a specific screen session.
 
@@ -318,12 +323,15 @@ def get_session_info(
 
 @mcp.tool
 def send_commands(
-    session_name: str = Field(description="Full name of the screen session (as returned by create_session)"),
+    session_name: str = Field(
+        description="Full name of the screen session (as returned by create_session)"
+    ),
     commands: List[str] = Field(
         description="List of commands to send to the session sequentially"
     ),
     delay_between_commands: float = Field(
-        default=0.1, description="Delay between sending commands in seconds (increase for slow commands)"
+        default=0.1,
+        description="Delay between sending commands in seconds (increase for slow commands)",
     ),
     stop_on_failure: bool = Field(
         default=True, description="If True, stop on first command failure"

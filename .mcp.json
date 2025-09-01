@@ -31,11 +31,11 @@
             "command": "python",
             "args": ["/home/ywatanabe/proj/sccpt/mcp_server_sccpt.py"]
         },
-        "screen-manager": {
+        "screen-session-manager": {
             "command": "python",
             "args": [
                 "-m",
-                "screen_manager.mcp_server"
+                "screen_session_manager.mcp_server"
             ],
             "env": {},
             "description": "Screen Session Manager - Manage screen sessions, send commands, and capture output"
